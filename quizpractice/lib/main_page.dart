@@ -4,7 +4,7 @@ class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext cclaontext) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(39, 0, 0, 0),
       appBar: AppBar(title: Text('Flutter Quiz')),
