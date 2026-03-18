@@ -18,17 +18,15 @@ class _QuizState extends State<Quiz> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(currentQuestion.text, style: TextStyle(color: Colors.red)),
-              SizedBox(height: 10),
-              ...currentQuestion.answer.map((answer) {
-                return ElevatedButton(onPressed: () {}, child: Text(answer));
-              }),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(currentQuestion.text, style: TextStyle(color: Colors.red)),
+            SizedBox(height: 10),
+            ...currentQuestion.answer.map((answer) {
+              return ElevatedButton(onPressed: () {}, child: Text(answer));
+            }),
+          ],
         ),
       ),
     );
