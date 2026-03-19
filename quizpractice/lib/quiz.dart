@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quizpractice/data/questions.dart';
+import 'package:quizpractice/result.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -10,15 +11,21 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  final List<String> selectedAnswer = [];
   var currentQuestionIndex = 0;
 
-  void answerQuestion() {
+  void answerQuestion(String pickedAnswer) {
+    selectedAnswer.add(pickedAnswer);
     setState(() {
-      if (currentQuestionIndex < questions.length - 1) {
+      if (selectedAnswer.length < questions.length) {
         currentQuestionIndex++;
       } else {
         // currentQuestionIndex = 0;
-        Navigator.pop(context);
+        // Navigator.pop(context);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Result()),
+        );
       }
     });
   }
@@ -46,17 +53,19 @@ class _QuizState extends State<Quiz> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
-              ...currentQuestion.answer.map((answer) {
+              ...currentQuestion.answer.map((item) {
                 return Padding(
                   padding: const EdgeInsets.all(4),
                   child: ElevatedButton(
-                    onPressed: answerQuestion,
+                    onPressed: () {
+                      answerQuestion(item);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
                       padding: EdgeInsets.symmetric(vertical: 12),
                     ),
-                    child: Text(answer),
+                    child: Text(item, textAlign: TextAlign.center),
                   ),
                 );
               }),
