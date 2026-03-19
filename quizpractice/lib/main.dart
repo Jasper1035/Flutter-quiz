@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizpractice/main_page.dart';
+// import 'package:quizpractice/main_page.dart';
+// import 'package:quizpractice/quiz.dart';
 
 void main() {
   runApp(MyApp());

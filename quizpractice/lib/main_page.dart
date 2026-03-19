@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quizpractice/quiz.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(BuildContext cclaontext) {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(39, 0, 0, 0),
       appBar: AppBar(title: Text('Flutter Quiz')),
@@ -19,7 +20,12 @@ class MainPage extends StatelessWidget {
             ),
             SizedBox(height: 40),
             OutlinedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Quiz()),
+                );
+              },
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
