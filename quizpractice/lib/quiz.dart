@@ -24,7 +24,7 @@ class _QuizState extends State<Quiz> {
         // Navigator.pop(context);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Result()),
+          MaterialPageRoute(builder: (context) => Result(chosenAnswers: [])),
         );
       }
     });
@@ -33,6 +33,7 @@ class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
+    final shuffledAnswers = List.of(currentQuestion.answer)..shuffle();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -53,7 +54,7 @@ class _QuizState extends State<Quiz> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
-              ...currentQuestion.answer.map((item) {
+              ...shuffledAnswers.map((item) {
                 return Padding(
                   padding: const EdgeInsets.all(4),
                   child: ElevatedButton(
