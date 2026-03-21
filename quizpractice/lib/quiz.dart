@@ -24,7 +24,9 @@ class _QuizState extends State<Quiz> {
         // Navigator.pop(context);
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Result(chosenAnswers: [])),
+          MaterialPageRoute(
+            builder: (context) => Result(chosenAnswers: selectedAnswer),
+          ),
         );
       }
     });
@@ -34,6 +36,13 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
     final shuffledAnswers = List.of(currentQuestion.answer)..shuffle();
+
+    int count = 0;
+    for (var i = 0; i < selectedAnswer.length; i++) {
+      if (selectedAnswer[i] == questions[i].answer[0]) {
+        count++;
+      }
+    }
 
     return Scaffold(
       backgroundColor: Colors.black,
